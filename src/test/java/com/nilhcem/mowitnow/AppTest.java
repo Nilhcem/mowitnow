@@ -1,38 +1,31 @@
 package com.nilhcem.mowitnow;
 
-import junit.framework.Test;
-import junit.framework.TestCase;
-import junit.framework.TestSuite;
+import java.io.IOException;
+
+import org.junit.*;
+import static org.fest.assertions.api.Assertions.*;
 
 /**
- * Unit test for simple App.
+ * Unit test for App.
  */
-public class AppTest 
-    extends TestCase
-{
-    /**
-     * Create the test case
-     *
-     * @param testName name of the test case
-     */
-    public AppTest( String testName )
-    {
-        super( testName );
-    }
+public class AppTest {
+	@Test(expected = IllegalArgumentException.class)
+	public void appWithNoArgShouldThrowAnException() throws IOException {
+		App.main(new String[] {});
+	}
 
-    /**
-     * @return the suite of tests being tested
-     */
-    public static Test suite()
-    {
-        return new TestSuite( AppTest.class );
-    }
+	@Test(expected = IllegalArgumentException.class)
+	public void appWithMoreThanOneArgShouldThrowToo() throws IOException {
+		App.main(new String[] { "one", "two" });
+	}
 
-    /**
-     * Rigourous Test :-)
-     */
-    public void testApp()
-    {
-        assertTrue( true );
-    }
+	@Test(expected = IOException.class)
+	public void appWithInvalidInstructionsFileShouldThrow() throws IOException {
+		try {
+			App.main(new String[] { "this_file_should_not_exist.txt" });
+		} catch (IOException e) {
+			assertThat(e).isNotInstanceOf(IllegalArgumentException.class);
+			throw e;
+		}
+	}
 }
