@@ -1,4 +1,4 @@
-package com.nilhcem.mowitnow.core;
+package com.nilhcem.mowitnow;
 
 /**
  * Hello world!
