@@ -77,4 +77,12 @@
 
 		</plugins>
 	</build>
+
+	<!-- License -->
+	<licenses>
+		<license>
+			<name>BSD</name>
+			<url>LICENSE.txt</url>
+		</license>
+	</licenses>
 </project>
