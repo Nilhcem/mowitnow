@@ -4,6 +4,7 @@ import static com.nilhcem.mowitnow.core.instruction.MowerInstruction.*;
 import static com.nilhcem.mowitnow.core.instruction.MowerOrientation.*;
 import static org.fest.assertions.api.Assertions.*;
 
+import java.awt.Point;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -50,6 +51,16 @@ public class MowerOrientationTest {
 
 	@Test
 	public void getFromInvalidAngleShouldReturnNull() {
-		assertThat(MowerOrientation.getFromAngle(42)).isNull();
+		assertThat(getFromAngle(42)).isNull();
+	}
+
+	@Test
+	public void testForwardCoordinates() {
+		Point coords = new Point(3, 3);
+
+		assertThat(getForwardCoordinates(NORTH, coords)).isEqualsToByComparingFields(new Point(3, 4));
+		assertThat(getForwardCoordinates(SOUTH, coords)).isEqualsToByComparingFields(new Point(3, 2));
+		assertThat(getForwardCoordinates(EAST, coords)).isEqualsToByComparingFields(new Point(4, 3));
+		assertThat(getForwardCoordinates(WEST, coords)).isEqualsToByComparingFields(new Point(2, 3));
 	}
 }
