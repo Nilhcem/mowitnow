@@ -1,7 +1,15 @@
 package com.nilhcem.mowitnow.core.instruction;
 
 /**
- * Instructions to move the mower.
+ * Instructions to give to the mower.
+ * <p>
+ * These can be either rotating or moving instructions:
+ * <ul>
+ * <li>'D' for a right rotation.</li>
+ * <li>'G' for a left rotation.</li>
+ * <li>'A' to move the mower forward.</li>
+ * </ul>
+ * </p>
  */
 public enum MowerInstruction {
 	RIGHT('D', 90),
