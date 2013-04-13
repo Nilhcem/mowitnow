@@ -19,6 +19,8 @@ public enum MowerOrientation {
 	private int xIncrement;
 	private int yIncrement;
 
+	private static final int CIRCLE_DEGREE = 360;
+
 	private MowerOrientation(char letter, int angle, int xIncrement, int yIncrement) {
 		this.letter = letter;
 		this.angle = angle;
@@ -69,6 +71,6 @@ public enum MowerOrientation {
 
 	// Check boundaries
 	private static int getProperAngle(int angle) {
-		return (((angle % 360) + 360) % 360);
+		return (((angle % CIRCLE_DEGREE) + CIRCLE_DEGREE) % CIRCLE_DEGREE);
 	}
 }
