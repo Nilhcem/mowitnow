@@ -5,10 +5,8 @@ import java.io.IOException;
 import org.junit.*;
 import static org.fest.assertions.api.Assertions.*;
 
-/**
- * Unit test for App.
- */
 public class AppTest {
+
 	@Test(expected = IllegalArgumentException.class)
 	public void appWithNoArgShouldThrowAnException() throws IOException {
 		App.main(new String[] {});
