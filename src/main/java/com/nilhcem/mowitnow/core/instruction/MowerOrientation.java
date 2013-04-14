@@ -48,16 +48,31 @@ public enum MowerOrientation {
 	}
 
 	/**
-	 * Gets new coordinates if object moves forward in its current orientation.
+	 * Gets new coordinates if object moves forward from its current orientation.
 	 *
-	 * @param orientation current orientation
-	 * @param coordinates current coordinates
-	 * @return
+	 * @param orientation current object orientation.
+	 * @param coordinates current object coordinates.
+	 * @return the new coordinates.
 	 */
 	public static Point getForwardCoordinates(MowerOrientation orientation, Point coordinates) {
 		int x = coordinates.x + orientation.xIncrement;
 		int y = coordinates.y + orientation.yIncrement;
 		return new Point(x, y);
+	}
+
+	/**
+	 * Returns the MowerOrientation for the char passed in parameter.
+	 *
+	 * @param ch the character of the Orientation we are searching for ('N', 'S', 'E', 'W').
+	 * @return the MowerOrientation object or {@code null} if not found.
+	 */
+	public static MowerOrientation getFromChar(char ch) {
+		for (MowerOrientation orientation : MowerOrientation.values()) {
+			if (orientation.letter == ch) {
+				return orientation;
+			}
+		}
+		return null;
 	}
 
 	static MowerOrientation getFromAngle(int angle) {

@@ -63,4 +63,17 @@ public class MowerOrientationTest {
 		assertThat(getForwardCoordinates(EAST, coords)).isEqualsToByComparingFields(new Point(4, 3));
 		assertThat(getForwardCoordinates(WEST, coords)).isEqualsToByComparingFields(new Point(2, 3));
 	}
+
+	@Test
+	public void testGetOrientationFromChar() {
+		assertThat(MowerOrientation.getFromChar('N')).isEqualTo(NORTH);
+		assertThat(MowerOrientation.getFromChar('E')).isEqualTo(EAST);
+		assertThat(MowerOrientation.getFromChar('S')).isEqualTo(SOUTH);
+		assertThat(MowerOrientation.getFromChar('W')).isEqualTo(WEST);
+	}
+
+	@Test
+	public void getInvalidOrientationShouldReturnNull() {
+		assertThat(MowerOrientation.getFromChar('z')).isNull();
+	}
 }
