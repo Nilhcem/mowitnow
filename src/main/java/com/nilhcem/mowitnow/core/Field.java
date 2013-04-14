@@ -13,17 +13,20 @@ public final class Field {
 
 	/**
 	 * Creates a new field, specifying its dimensions.
+	 * <p>
+	 * A dimension of (w=1, h=1) will create a field containing 4 elements (we start counting from 0).
+	 * </p>
 	 *
 	 * @param width maximum width of the field.
 	 * @param height maximum height of the field.
 	 * @throws InvalidParameterException when width or height < 1.
 	 */
 	public Field(int width, int height) {
-		if (width < 1) {
-			throw new InvalidParameterException("Width should not be < 1");
+		if (width < 0) {
+			throw new InvalidParameterException("Width should not be < 0");
 		}
-		if (height < 1) {
-			throw new InvalidParameterException("Height should not be < 1");
+		if (height < 0) {
+			throw new InvalidParameterException("Height should not be < 0");
 		}
 
 		this.width = width;
@@ -45,7 +48,7 @@ public final class Field {
 	 * @return true if coordinate is in field, or false if outside field boundaries.
 	 */
 	public boolean isValidLocation(Point location) {
-		return (location.x >= 0 && location.x < width &&
-				location.y >= 0 && location.y < height);
+		return (location.x >= 0 && location.x <= width &&
+				location.y >= 0 && location.y <= height);
 	}
 }

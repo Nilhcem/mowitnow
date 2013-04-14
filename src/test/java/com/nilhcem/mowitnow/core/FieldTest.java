@@ -16,15 +16,15 @@ public class FieldTest {
 
 	@Test(expected = InvalidParameterException.class)
 	public void testInvalidHeight() {
-		new Field(3, 0);
+		new Field(3, -1);
 	}
 
 	@Test
 	public void testInvalidLocations() {
 		Field field = new Field(3, 3);
 		assertThat(field.isValidLocation(new Point(10, 10))).isFalse();
-		assertThat(field.isValidLocation(new Point(3, 0))).isFalse();
-		assertThat(field.isValidLocation(new Point(0, 3))).isFalse();
+		assertThat(field.isValidLocation(new Point(4, 0))).isFalse();
+		assertThat(field.isValidLocation(new Point(0, 4))).isFalse();
 		assertThat(field.isValidLocation(new Point(-1, 2))).isFalse();
 		assertThat(field.isValidLocation(new Point(1, -2))).isFalse();
 	}
@@ -35,5 +35,6 @@ public class FieldTest {
 		assertThat(field.isValidLocation(new Point(0, 0))).isTrue();
 		assertThat(field.isValidLocation(new Point(1, 1))).isTrue();
 		assertThat(field.isValidLocation(new Point(2, 2))).isTrue();
+		assertThat(field.isValidLocation(new Point(3, 3))).isTrue();
 	}
 }

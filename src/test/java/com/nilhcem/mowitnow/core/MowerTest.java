@@ -14,7 +14,7 @@ public class MowerTest {
 
 	@Before
 	public void setUp() {
-		field = new Field(2, 2);
+		field = new Field(1, 1);
 	}
 
 	@Test
