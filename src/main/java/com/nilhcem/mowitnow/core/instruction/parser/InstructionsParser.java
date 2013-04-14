@@ -19,6 +19,7 @@ import com.nilhcem.mowitnow.core.instruction.MowerOrientation;
  * Provides useful methods to parse lawn-mower instruction files.
  */
 public final class InstructionsParser {
+	private static final int MIN_INSTRUCTIONS_REQUIRED = 3;
 	private static final String REGEX_SURFACE = "^\\s*(\\d+)\\s+(\\d+)\\s*$";
 	private static final String REGEX_MOWER_LOCATION = "^\\s*(\\d+)\\s+(\\d+)\\s+([NEWS])\\s*$";
 
@@ -41,8 +42,8 @@ public final class InstructionsParser {
 	 * @see "instructions specifications".
 	 */
 	public InstructionsParser(List<String> instructions) {
-		if (instructions.size() < 3) {
-			throw new ParserException("At least 3 instructions are required");
+		if (instructions.size() < MIN_INSTRUCTIONS_REQUIRED) {
+			throw new ParserException("At least " + MIN_INSTRUCTIONS_REQUIRED + " instructions are required");
 		}
 
 		field = parseFieldData(instructions.get(0));
