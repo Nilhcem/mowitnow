@@ -30,6 +30,14 @@ public final class Field {
 		this.height = height;
 	}
 
+	public int getWidth() {
+		return width;
+	}
+
+	public int getHeight() {
+		return height;
+	}
+
 	/**
 	 * Indicates whether coordinates are valid.
 	 *
