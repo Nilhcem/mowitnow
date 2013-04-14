@@ -18,7 +18,7 @@ public final class Mower {
 	 *
 	 * @param coordinates initial coordinates.
 	 * @param orientation initial orientation.
-	 * @param field environment where the mower will do its work.
+	 * @param field environment where the mower will do its work (the mower needs to be aware of its environment).
 	 */
 	public Mower(Point coordinates, MowerOrientation orientation, Field field) {
 		this.coordinates = coordinates;
