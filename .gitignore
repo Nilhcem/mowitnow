@@ -3,10 +3,10 @@
 \#*
 
 # Ignore target folder
-target/*
+target/
 
 # Ignore eclipse files
 .classpath
 .pmd
 .project
-.settings/*
+.settings/
