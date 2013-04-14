@@ -8,6 +8,7 @@ import java.util.List;
 import org.junit.Test;
 
 public class MowerInstructionTest {
+
 	@Test
 	public void forwardShouldNotModifyMowerOrentation() {
 		assertThat(MowerInstruction.FORWARD.getAngle()).isEqualTo(0);
@@ -31,5 +32,17 @@ public class MowerInstructionTest {
 			}
 			seen.add(instr.getLetter());
 		}
+	}
+
+	@Test
+	public void testGetInstructionsFromChar() {
+		assertThat(MowerInstruction.getFromChar('D')).isEqualTo(MowerInstruction.RIGHT);
+		assertThat(MowerInstruction.getFromChar('G')).isEqualTo(MowerInstruction.LEFT);
+		assertThat(MowerInstruction.getFromChar('A')).isEqualTo(MowerInstruction.FORWARD);
+	}
+
+	@Test
+	public void getInvalidInstructionShouldReturnNull() {
+		assertThat(MowerInstruction.getFromChar('z')).isNull();
 	}
 }

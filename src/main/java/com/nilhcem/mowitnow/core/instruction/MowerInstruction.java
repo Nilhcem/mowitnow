@@ -31,4 +31,19 @@ public enum MowerInstruction {
 	char getLetter() {
 		return letter;
 	}
+
+	/**
+	 * Returns the instruction for the char passed in parameter.
+	 *
+	 * @param ch the character of the instruction we are searching for ('D', 'G', 'A').
+	 * @return the MowerInstruction object {@code null} if not found.
+	 */
+	public static MowerInstruction getFromChar(char ch) {
+		for (MowerInstruction instruction : MowerInstruction.values()) {
+			if (instruction.letter == ch) {
+				return instruction;
+			}
+		}
+		return null;
+	}
 }
