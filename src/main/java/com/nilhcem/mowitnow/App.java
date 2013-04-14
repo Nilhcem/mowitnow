@@ -2,6 +2,7 @@ package com.nilhcem.mowitnow;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.commons.io.FileUtils;
@@ -23,10 +24,19 @@ public final class App {
 
 	public static void main(String[] args) throws IOException {
 		List<String> instructions = App.getInstructionsFromArgFile(args);
-		runInstructions(instructions);
+		for (String position : getMowersPositions(instructions)) {
+			System.out.println(position);
+		}
 	}
 
-	private static List<String> getInstructionsFromArgFile(String[] args) throws IOException {
+	/**
+	 * Reads the contents of the file passed in args line by line to a List of Strings using the default encoding for the VM.
+	 *
+	 * @param args the instructions file path - should only contain one element.
+	 * @return the list of Strings representing each line in the file passed in args, never {@code null}.
+	 * @throws IOException in case of an I/O error.
+	 */
+	static List<String> getInstructionsFromArgFile(String[] args) throws IOException {
 		if (args.length != 1) {
 			throw new IllegalArgumentException("App is expecting one (and only one) parameter: the mower instructions file");
 		}
@@ -35,7 +45,14 @@ public final class App {
 		return FileUtils.readLines(instructions, "UTF-8");
 	}
 
-	private static void runInstructions(List<String> data) {
+	/**
+	 * Runs instructions passed in parameter and returns a list of the mowers positions.
+	 *
+	 * @param data instructions to parse.
+	 * @return a sorted list of all the mowers final positions.
+	 */
+	static List<String> getMowersPositions(List<String> data) {
+		List<String> positions = new ArrayList<String>();
 		InstructionsParser parser = new InstructionsParser(data);
 
 		Mower mower = parser.getNextMower();
@@ -44,8 +61,10 @@ public final class App {
 			for (MowerInstruction instr : instrs) {
 				mower.process(instr);
 			}
-			System.out.println(mower.getPosition());
+			positions.add(mower.getPosition());
 			mower = parser.getNextMower();
 		}
+
+		return positions;
 	}
 }
