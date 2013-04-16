@@ -27,6 +27,24 @@ public final class Mower {
 	}
 
 	/**
+	 * Returns a new instance of the mower's coordinates.
+	 *
+	 * @return a new Point() with the mower's coordinates.
+	 */
+	public Point getCoordinates() {
+		return new Point(coordinates.x, coordinates.y);
+	}
+
+	/**
+	 * Retrieves the mower's orientation.
+	 *
+	 * @return the mower's orientation.
+	 */
+	public MowerOrientation getOrientation() {
+		return orientation;
+	}
+
+	/**
 	 * Returns a String representation of the mower's current position in its environment.
 	 * <p>
 	 * Example: "{@code 3 2 N}" means "x=3, y=2, N(orth)".
