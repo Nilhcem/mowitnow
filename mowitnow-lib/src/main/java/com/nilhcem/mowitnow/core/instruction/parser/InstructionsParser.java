@@ -28,7 +28,7 @@ public final class InstructionsParser {
 	private final Map<Mower, List<MowerInstruction>> instructions = new HashMap<Mower, List<MowerInstruction>>();
 
 	/**
-	 * Parses instructions and create appropriate objects.
+	 * Parses instructions and creates appropriate objects.
 	 * <p>
 	 * Once the constructor has been called, the following objects will be created:
 	 * <ul>
