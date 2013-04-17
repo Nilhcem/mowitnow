@@ -31,3 +31,7 @@ mowitnow-android:
 Android project
 deploy on your device using:
     mvn android:deploy
+
+
+Import android project in Eclipse via
+File > Import > Maven > Existing Maven Project

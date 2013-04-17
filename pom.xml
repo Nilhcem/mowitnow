@@ -22,10 +22,13 @@
 	</modules>
 
 	<dependencies>
+		<!-- Testing -->
+		<!-- Make sure the Android eclipse import works properly if you update this Junit dependency -->
+		<!-- https://groups.google.com/forum/?fromgroups=#!topic/playn/RR0X-TpWjog -->
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
-			<version>4.11</version>
+			<version>4.8.1</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
