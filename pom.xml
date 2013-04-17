@@ -18,6 +18,7 @@
 	<modules>
 		<module>mowitnow-lib</module>
 		<module>mowitnow-cli</module>
+		<module>mowitnow-android</module>
 	</modules>
 
 	<dependencies>

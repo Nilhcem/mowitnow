@@ -1,0 +1,61 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>com.nilhcem.mowitnow</groupId>
+		<artifactId>mowitnow-parent</artifactId>
+		<version>1.0-SNAPSHOT</version>
+	</parent>
+
+	<groupId>com.nilhcem.mowitnow</groupId>
+	<artifactId>mowitnow-android</artifactId>
+	<packaging>apk</packaging>
+
+	<name>mowitnow-android</name>
+	<description>Android interface for the MowItNow library</description>
+
+	<dependencies>
+		<!-- MowItNow core library -->
+		<dependency>
+			<groupId>com.nilhcem.mowitnow</groupId>
+			<artifactId>mowitnow-lib</artifactId>
+			<version>1.0-SNAPSHOT</version>
+		</dependency>
+
+		<!-- Android -->
+		<dependency>
+			<groupId>com.google.android</groupId>
+			<artifactId>android</artifactId>
+			<version>4.1.1.4</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<!-- Commons-io: Utility classes for file manipulations -->
+		<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>2.4</version>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<finalName>${project.artifactId}</finalName>
+		<sourceDirectory>src</sourceDirectory>
+		<plugins>
+			<!-- Android Maven Plugin -->
+			<plugin>
+				<groupId>com.jayway.maven.plugins.android.generation2</groupId>
+				<artifactId>android-maven-plugin</artifactId>
+				<version>3.5.3</version>
+				<configuration>
+					<sdk>
+						<path>${env.ANDROID_SDK}</path>
+						<platform>17</platform>
+					</sdk>
+				</configuration>
+				<extensions>true</extensions>
+			</plugin>
+		</plugins>
+	</build>
+</project>
