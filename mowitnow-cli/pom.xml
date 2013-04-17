@@ -10,10 +10,9 @@
 
 	<groupId>com.nilhcem.mowitnow</groupId>
 	<artifactId>mowitnow-cli</artifactId>
-	<version>1.0-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>MowItNow-cli</name>
+	<name>mowitnow-cli</name>
 	<description>Command line interface for the MowItNow library</description>
 
 	<dependencies>
