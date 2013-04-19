@@ -40,7 +40,7 @@ public class InstructionsActivityTest {
 	}
 
 	@Test
-	public void shouldHaveAButtonThatMowItNow() throws Exception {
+	public void shouldHaveAButtonThatDisplaysMowItNow() throws Exception {
 		assertThat((String) mainButton.getText()).isEqualTo("Mow it now!");
 	}
 

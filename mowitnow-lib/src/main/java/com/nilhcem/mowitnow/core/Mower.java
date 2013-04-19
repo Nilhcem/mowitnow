@@ -6,7 +6,7 @@ import com.nilhcem.mowitnow.core.instruction.MowerOrientation;
 /**
  * Represents a lawn mower which is controlled by some given instructions.
  */
-public final class Mower {
+public class Mower {
 	private Coordinate coordinates;
 	private MowerOrientation orientation;
 	private Field field;
