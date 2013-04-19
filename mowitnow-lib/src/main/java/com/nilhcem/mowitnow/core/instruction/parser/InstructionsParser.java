@@ -39,7 +39,7 @@ public final class InstructionsParser {
 	 * @see "instructions specifications".
 	 * @throws ParserException if given instructions are invalid.
 	 */
-	public InstructionsParser(List<String> instructions) {
+	public InstructionsParser(List<String> instructions) throws ParserException {
 		field = parseFieldData(instructions.get(0));
 		parseMowersData(instructions.subList(1, instructions.size()));
 
@@ -76,7 +76,7 @@ public final class InstructionsParser {
 		return instructions.get(mower);
 	}
 
-	private Field parseFieldData(String data) {
+	private Field parseFieldData(String data) throws ParserException {
 		Pattern pattern = Pattern.compile(REGEX_SURFACE);
 		Matcher matcher = pattern.matcher(data);
 
@@ -93,7 +93,7 @@ public final class InstructionsParser {
 		}
 	}
 
-	private void parseMowersData(List<String> instrs) {
+	private void parseMowersData(List<String> instrs) throws ParserException {
 		boolean locationLine = true;
 
 		Pattern locPattern = Pattern.compile(REGEX_MOWER_LOCATION);
@@ -109,7 +109,7 @@ public final class InstructionsParser {
 		}
 	}
 
-	private Mower createMowerFromLocationData(Pattern pattern, String data) {
+	private Mower createMowerFromLocationData(Pattern pattern, String data) throws ParserException {
 		Matcher matcher = pattern.matcher(data);
 		if (matcher.find()) {
 			try {
@@ -130,7 +130,7 @@ public final class InstructionsParser {
 				+ " - should match " + REGEX_MOWER_LOCATION);
 	}
 
-	private List<MowerInstruction> createInstructionsListFromData(String data) {
+	private List<MowerInstruction> createInstructionsListFromData(String data) throws ParserException {
 		List<MowerInstruction> list = new ArrayList<MowerInstruction>();
 
 		for (char c : data.toCharArray()) {

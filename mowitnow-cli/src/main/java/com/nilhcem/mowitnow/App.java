@@ -10,6 +10,7 @@ import org.apache.commons.io.FileUtils;
 import com.nilhcem.mowitnow.core.Mower;
 import com.nilhcem.mowitnow.core.instruction.MowerInstruction;
 import com.nilhcem.mowitnow.core.instruction.parser.InstructionsParser;
+import com.nilhcem.mowitnow.core.instruction.parser.ParserException;
 
 /**
  * Starting point of the application.
@@ -22,7 +23,7 @@ public final class App {
 	private App() {
 	}
 
-	public static void main(String[] args) throws IOException {
+	public static void main(String[] args) throws IOException, ParserException {
 		List<String> instructions = App.getInstructionsFromArgFile(args);
 		for (String position : getMowersPositions(instructions)) {
 			System.out.println(position);
@@ -50,8 +51,9 @@ public final class App {
 	 *
 	 * @param data instructions to parse.
 	 * @return a sorted list of all the mowers final positions.
+	 * @throws ParserException when an exception occured while parsing instructions.
 	 */
-	static List<String> getMowersPositions(List<String> data) {
+	static List<String> getMowersPositions(List<String> data) throws ParserException {
 		List<String> positions = new ArrayList<String>();
 		InstructionsParser parser = new InstructionsParser(data);
 

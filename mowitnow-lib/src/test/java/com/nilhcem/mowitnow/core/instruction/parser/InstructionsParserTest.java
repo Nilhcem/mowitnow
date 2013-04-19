@@ -26,7 +26,7 @@ public class InstructionsParserTest {
 	}
 
 	@Test
-	public void instanciatingWithLessThan3InstructionsShouldThrow() {
+	public void instanciatingWithLessThan3InstructionsShouldThrow() throws ParserException {
 		InstructionsParser parser = new InstructionsParser(instructions);
 
 		Field field = parser.getField();
@@ -35,28 +35,28 @@ public class InstructionsParserTest {
 	}
 
 	@Test(expected = ParserException.class)
-	public void invalidFieldInstructionsShouldThrow() {
+	public void invalidFieldInstructionsShouldThrow() throws ParserException {
 		instructions.remove(0);
 		instructions.add(0, "4 2 0");
 		new InstructionsParser(instructions);
 	}
 
 	@Test(expected = ParserException.class)
-	public void invalidMowerLocationShouldThrow() {
+	public void invalidMowerLocationShouldThrow() throws ParserException {
 		instructions.remove(1);
 		instructions.add(1, "42");
 		new InstructionsParser(instructions);
 	}
 
 	@Test(expected = ParserException.class)
-	public void invalidMowerInstructionsOnlyShouldThrow() {
+	public void invalidMowerInstructionsOnlyShouldThrow() throws ParserException {
 		instructions.remove(2);
 		instructions.add("WTF");
 		new InstructionsParser(instructions);
 	}
 
 	@Test
-	public void testOneMowerValidData() {
+	public void testOneMowerValidData() throws ParserException {
 		InstructionsParser parser = new InstructionsParser(instructions);
 
 		// Testing field
@@ -77,7 +77,7 @@ public class InstructionsParserTest {
 	}
 
 	@Test
-	public void invalidMowerInstructionsShouldBeIgnored() {
+	public void invalidMowerInstructionsShouldBeIgnored() throws ParserException {
 		instructions.remove(2);
 		instructions.add("OMG WTF BBQ!!!1"); // only valid instruction here is 'G'
 		InstructionsParser parser = new InstructionsParser(instructions);
@@ -88,7 +88,7 @@ public class InstructionsParserTest {
 	}
 
 	@Test
-	public void testMultipleMowersValidData() {
+	public void testMultipleMowersValidData() throws ParserException {
 		List<String> instrs = new ArrayList<String>();
 		instrs.add("  4  	3 	");
 		instrs.add("  1   	2  	N ");
