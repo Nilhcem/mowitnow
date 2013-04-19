@@ -1,6 +1,6 @@
 package com.nilhcem.mowitnow.core.instruction;
 
-import java.awt.Point;
+import com.nilhcem.mowitnow.core.Coordinate;
 
 /**
  * Represents the orientation of a mower in its environment.
@@ -54,10 +54,10 @@ public enum MowerOrientation {
 	 * @param coordinates current object coordinates.
 	 * @return the new coordinates.
 	 */
-	public static Point getForwardCoordinates(MowerOrientation orientation, Point coordinates) {
-		int x = coordinates.x + orientation.xIncrement;
-		int y = coordinates.y + orientation.yIncrement;
-		return new Point(x, y);
+	public static Coordinate getForwardCoordinates(MowerOrientation orientation, Coordinate coordinates) {
+		int x = coordinates.getX() + orientation.xIncrement;
+		int y = coordinates.getY() + orientation.yIncrement;
+		return new Coordinate(x, y);
 	}
 
 	/**

@@ -2,13 +2,13 @@ package com.nilhcem.mowitnow.core.instruction.parser;
 
 import static org.fest.assertions.api.Assertions.*;
 
-import java.awt.Point;
 import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.Before;
 import org.junit.Test;
 
+import com.nilhcem.mowitnow.core.Coordinate;
 import com.nilhcem.mowitnow.core.Field;
 import com.nilhcem.mowitnow.core.Mower;
 import com.nilhcem.mowitnow.core.instruction.MowerInstruction;
@@ -70,10 +70,13 @@ public class InstructionsParserTest {
 		assertThat(mower).isNotNull();
 		assertThat(parser.getNextMower()).isNull();
 
+		List<Mower> mowers = parser.getMowers();
+		assertThat(mowers.size()).isEqualTo(1);
+
 		// Testing instructions
 		List<MowerInstruction> instructions = parser.getInstructionsForMower(mower);
 		assertThat(instructions.size()).isEqualTo(9);
-		Mower unknown = new Mower(new Point(0, 0), MowerOrientation.EAST, null);
+		Mower unknown = new Mower(new Coordinate(0, 0), MowerOrientation.EAST, null);
 		assertThat(parser.getInstructionsForMower(unknown)).isNull();
 	}
 

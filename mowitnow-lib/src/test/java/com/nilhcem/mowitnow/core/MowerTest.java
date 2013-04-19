@@ -1,7 +1,5 @@
 package com.nilhcem.mowitnow.core;
 
-import java.awt.Point;
-
 import org.junit.*;
 
 import com.nilhcem.mowitnow.core.instruction.MowerInstruction;
@@ -20,21 +18,21 @@ public class MowerTest {
 	@Test
 	public void testMowerPositionStringRepresentation() {
 		Field field = new Field(10, 10);
-		Mower mower = new Mower(new Point(3, 4), MowerOrientation.SOUTH, field);
+		Mower mower = new Mower(new Coordinate(3, 4), MowerOrientation.SOUTH, field);
 		assertThat(mower.getPosition()).isEqualTo("3 4 S");
 	}
 
 	@Test
 	public void testInvalidForwardInstructions() {
-		assertThat(new Mower(new Point(0, 0), MowerOrientation.WEST, field).process(MowerInstruction.FORWARD)).isFalse();
-		assertThat(new Mower(new Point(0, 0), MowerOrientation.SOUTH, field).process(MowerInstruction.FORWARD)).isFalse();
-		assertThat(new Mower(new Point(0, 1), MowerOrientation.NORTH, field).process(MowerInstruction.FORWARD)).isFalse();
-		assertThat(new Mower(new Point(1, 0), MowerOrientation.EAST, field).process(MowerInstruction.FORWARD)).isFalse();
+		assertThat(new Mower(new Coordinate(0, 0), MowerOrientation.WEST, field).process(MowerInstruction.FORWARD)).isFalse();
+		assertThat(new Mower(new Coordinate(0, 0), MowerOrientation.SOUTH, field).process(MowerInstruction.FORWARD)).isFalse();
+		assertThat(new Mower(new Coordinate(0, 1), MowerOrientation.NORTH, field).process(MowerInstruction.FORWARD)).isFalse();
+		assertThat(new Mower(new Coordinate(1, 0), MowerOrientation.EAST, field).process(MowerInstruction.FORWARD)).isFalse();
 	}
 
 	@Test
 	public void testMultipleForwardInstructions() {
-		Mower mower = new Mower(new Point(0, 0), MowerOrientation.NORTH, field);
+		Mower mower = new Mower(new Coordinate(0, 0), MowerOrientation.NORTH, field);
 
 		assertThat(mower.getPosition()).isEqualTo("0 0 N");
 		assertThat(mower.process(MowerInstruction.FORWARD)).isTrue();

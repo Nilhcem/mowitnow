@@ -4,11 +4,12 @@ import static com.nilhcem.mowitnow.core.instruction.MowerInstruction.*;
 import static com.nilhcem.mowitnow.core.instruction.MowerOrientation.*;
 import static org.fest.assertions.api.Assertions.*;
 
-import java.awt.Point;
 import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.Test;
+
+import com.nilhcem.mowitnow.core.Coordinate;
 
 public class MowerOrientationTest {
 
@@ -56,12 +57,12 @@ public class MowerOrientationTest {
 
 	@Test
 	public void testForwardCoordinates() {
-		Point coords = new Point(3, 3);
+		Coordinate coords = new Coordinate(3, 3);
 
-		assertThat(getForwardCoordinates(NORTH, coords)).isEqualsToByComparingFields(new Point(3, 4));
-		assertThat(getForwardCoordinates(SOUTH, coords)).isEqualsToByComparingFields(new Point(3, 2));
-		assertThat(getForwardCoordinates(EAST, coords)).isEqualsToByComparingFields(new Point(4, 3));
-		assertThat(getForwardCoordinates(WEST, coords)).isEqualsToByComparingFields(new Point(2, 3));
+		assertThat(getForwardCoordinates(NORTH, coords)).isEqualsToByComparingFields(new Coordinate(3, 4));
+		assertThat(getForwardCoordinates(SOUTH, coords)).isEqualsToByComparingFields(new Coordinate(3, 2));
+		assertThat(getForwardCoordinates(EAST, coords)).isEqualsToByComparingFields(new Coordinate(4, 3));
+		assertThat(getForwardCoordinates(WEST, coords)).isEqualsToByComparingFields(new Coordinate(2, 3));
 	}
 
 	@Test

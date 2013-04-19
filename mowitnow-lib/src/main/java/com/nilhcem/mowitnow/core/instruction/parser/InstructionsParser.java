@@ -1,6 +1,5 @@
 package com.nilhcem.mowitnow.core.instruction.parser;
 
-import java.awt.Point;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -10,6 +9,7 @@ import java.util.Queue;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import com.nilhcem.mowitnow.core.Coordinate;
 import com.nilhcem.mowitnow.core.Field;
 import com.nilhcem.mowitnow.core.Mower;
 import com.nilhcem.mowitnow.core.instruction.MowerInstruction;
@@ -19,12 +19,11 @@ import com.nilhcem.mowitnow.core.instruction.MowerOrientation;
  * Provides useful methods to parse lawn-mower instruction files.
  */
 public final class InstructionsParser {
-	private static final int MIN_INSTRUCTIONS_REQUIRED = 3;
 	private static final String REGEX_SURFACE = "^\\s*(\\d+)\\s+(\\d+)\\s*$";
 	private static final String REGEX_MOWER_LOCATION = "^\\s*(\\d+)\\s+(\\d+)\\s+([NEWS])\\s*$";
 
 	private final Field field;
-	private final Queue<Mower> mowers = new LinkedList<Mower>();
+	private final Queue<Mower> mowers = new ArrayList<Mower>();
 	private final Map<Mower, List<MowerInstruction>> instructions = new HashMap<Mower, List<MowerInstruction>>();
 
 	/**
@@ -40,14 +39,15 @@ public final class InstructionsParser {
 	 *
 	 * @param instructions a list of instructions.
 	 * @see "instructions specifications".
+	 * @throws ParserException if given instructions are invalid.
 	 */
 	public InstructionsParser(List<String> instructions) {
-		if (instructions.size() < MIN_INSTRUCTIONS_REQUIRED) {
-			throw new ParserException("At least " + MIN_INSTRUCTIONS_REQUIRED + " instructions are required");
-		}
-
 		field = parseFieldData(instructions.get(0));
 		parseMowersData(instructions.subList(1, instructions.size()));
+
+		if (mowers.isEmpty()) {
+			throw new ParserException("At least 1 mower is required");
+		}
 	}
 
 	/**
@@ -120,7 +120,7 @@ public final class InstructionsParser {
 				char c = matcher.group(3).charAt(0);
 				MowerOrientation orientation = MowerOrientation.getFromChar(c);
 				if (orientation != null) {
-					return new Mower(new Point(x, y), orientation, field);
+					return new Mower(new Coordinate(x, y), orientation, field);
 				}
 			} catch (IndexOutOfBoundsException e) {
 				throw new ParserException(e);

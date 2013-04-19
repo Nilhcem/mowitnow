@@ -1,6 +1,5 @@
 package com.nilhcem.mowitnow.core;
 
-import java.awt.Point;
 import java.security.InvalidParameterException;
 
 /**
@@ -47,8 +46,8 @@ public final class Field {
 	 * @param coordinate the coordinate to check.
 	 * @return true if coordinate is in field, or false if outside field boundaries.
 	 */
-	public boolean isValidLocation(Point location) {
-		return (location.x >= 0 && location.x <= width &&
-				location.y >= 0 && location.y <= height);
+	public boolean isValidLocation(Coordinate coordinate) {
+		return (coordinate.getX() >= 0 && coordinate.getX() <= width &&
+				coordinate.getY() >= 0 && coordinate.getY() <= height);
 	}
 }

@@ -1,7 +1,5 @@
 package com.nilhcem.mowitnow.core;
 
-import java.awt.Point;
-
 import com.nilhcem.mowitnow.core.instruction.MowerInstruction;
 import com.nilhcem.mowitnow.core.instruction.MowerOrientation;
 
@@ -9,7 +7,7 @@ import com.nilhcem.mowitnow.core.instruction.MowerOrientation;
  * Represents a lawn mower which is controlled by some given instructions.
  */
 public final class Mower {
-	private Point coordinates;
+	private Coordinate coordinates;
 	private MowerOrientation orientation;
 	private Field field;
 
@@ -20,7 +18,7 @@ public final class Mower {
 	 * @param orientation initial orientation.
 	 * @param field environment where the mower will do its work (the mower needs to be aware of its environment).
 	 */
-	public Mower(Point coordinates, MowerOrientation orientation, Field field) {
+	public Mower(Coordinate coordinates, MowerOrientation orientation, Field field) {
 		this.coordinates = coordinates;
 		this.orientation = orientation;
 		this.field = field;
@@ -29,10 +27,10 @@ public final class Mower {
 	/**
 	 * Returns a new instance of the mower's coordinates.
 	 *
-	 * @return a new Point() with the mower's coordinates.
+	 * @return the mower's coordinates.
 	 */
-	public Point getCoordinates() {
-		return new Point(coordinates.x, coordinates.y);
+	public Coordinate getCoordinates() {
+		return new Coordinate(coordinates.getX(), coordinates.getY());
 	}
 
 	/**
@@ -53,7 +51,7 @@ public final class Mower {
 	 * @return the mower's position.
 	 */
 	public String getPosition() {
-		return String.format("%d %d %c", coordinates.x, coordinates.y, orientation.getLetter());
+		return String.format("%d %d %c", coordinates.getX(), coordinates.getY(), orientation.getLetter());
 	}
 
 	/**
@@ -79,7 +77,7 @@ public final class Mower {
 	}
 
 	private boolean moveForward() {
-		Point newCoords = MowerOrientation.getForwardCoordinates(orientation, coordinates);
+		Coordinate newCoords = MowerOrientation.getForwardCoordinates(orientation, coordinates);
 		if (field.isValidLocation(newCoords)) {
 			coordinates = newCoords;
 			return true;
