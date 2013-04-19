@@ -1,6 +1,7 @@
 # Temporary files
 *~
 \#*
+tmp/
 
 # Target folder
 target/
