@@ -66,15 +66,11 @@ public class InstructionsParserTest {
 		assertThat(field.getHeight()).isEqualTo(7);
 
 		// Testing mowers
-		Mower mower = parser.getNextMower();
-		assertThat(mower).isNotNull();
-		assertThat(parser.getNextMower()).isNull();
-
 		List<Mower> mowers = parser.getMowers();
 		assertThat(mowers.size()).isEqualTo(1);
 
 		// Testing instructions
-		List<MowerInstruction> instructions = parser.getInstructionsForMower(mower);
+		List<MowerInstruction> instructions = parser.getInstructionsForMower(mowers.get(0));
 		assertThat(instructions.size()).isEqualTo(9);
 		Mower unknown = new Mower(new Coordinate(0, 0), MowerOrientation.EAST, null);
 		assertThat(parser.getInstructionsForMower(unknown)).isNull();
@@ -85,7 +81,7 @@ public class InstructionsParserTest {
 		instructions.remove(2);
 		instructions.add("OMG WTF BBQ!!!1"); // only valid instruction here is 'G'
 		InstructionsParser parser = new InstructionsParser(instructions);
-		Mower mower = parser.getNextMower();
+		Mower mower = parser.getMowers().get(0);
 		List<MowerInstruction> instructions = parser.getInstructionsForMower(mower);
 		assertThat(instructions.size()).isEqualTo(1);
 		assertThat(instructions.get(0)).isEqualsToByComparingFields(MowerInstruction.LEFT);
@@ -108,12 +104,10 @@ public class InstructionsParserTest {
 		assertThat(field.getHeight()).isEqualTo(3);
 
 		// Testing mowers
-		Mower mower1 = parser.getNextMower();
-		Mower mower2 = parser.getNextMower();
-		Mower mower3 = parser.getNextMower();
-		assertThat(mower1).isNotNull();
-		assertThat(mower2).isNotNull();
-		assertThat(mower3).isNull();
+		List<Mower> mowers = parser.getMowers();
+		assertThat(mowers.size()).isEqualTo(2);
+		Mower mower1 = mowers.get(0);
+		Mower mower2 = mowers.get(1);
 
 		// Testing instructions
 		assertThat(parser.getInstructionsForMower(mower1).size()).isEqualTo(9);

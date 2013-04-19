@@ -2,10 +2,8 @@ package com.nilhcem.mowitnow.core.instruction.parser;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
-import java.util.Queue;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -23,7 +21,7 @@ public final class InstructionsParser {
 	private static final String REGEX_MOWER_LOCATION = "^\\s*(\\d+)\\s+(\\d+)\\s+([NEWS])\\s*$";
 
 	private final Field field;
-	private final Queue<Mower> mowers = new ArrayList<Mower>();
+	private final List<Mower> mowers = new ArrayList<Mower>();
 	private final Map<Mower, List<MowerInstruction>> instructions = new HashMap<Mower, List<MowerInstruction>>();
 
 	/**
@@ -60,12 +58,12 @@ public final class InstructionsParser {
 	}
 
 	/**
-	 * Retrieves and removes the Mower in the head of the queue, or returns null if the queue is empty.
+	 * Returns all the Mowers.
 	 *
-	 * @return the next Mower, or the head of this queue, or {@code null} if the queue is empty.
+	 * @return all the Mowers.
 	 */
-	public Mower getNextMower() {
-		return mowers.poll();
+	public List<Mower> getMowers() {
+		return mowers;
 	}
 
 	/**

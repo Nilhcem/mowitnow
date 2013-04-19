@@ -55,16 +55,14 @@ public final class App {
 		List<String> positions = new ArrayList<String>();
 		InstructionsParser parser = new InstructionsParser(data);
 
-		Mower mower = parser.getNextMower();
-		while (mower != null) {
+		List<Mower> mowers = parser.getMowers();
+		for (Mower mower : mowers) {
 			List<MowerInstruction> instrs = parser.getInstructionsForMower(mower);
 			for (MowerInstruction instr : instrs) {
 				mower.process(instr);
 			}
 			positions.add(mower.getPosition());
-			mower = parser.getNextMower();
 		}
-
 		return positions;
 	}
 }
