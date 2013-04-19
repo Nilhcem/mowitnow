@@ -1,8 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
     <string name="app_name">MowItNow</string>
     <string name="action_settings">Settings</string>
-    <string name="hello_world">Hello world!</string>
 
+    <!-- Instructions -->
+    <string name="instr_title">Please input some instructions:</string>
+    <string name="instr_sample">5 5\n1 2 N\nGAGAGAGAA\n3 3 E\nAADAADADDA\n</string>
+    <string name="instr_button">Mow it now!</string>
+    <string name="instr_error_title">Invalid data</string>
+    <string name="instr_error_msg">Please enter valid instructions.</string>
+
+	<!-- Result -->
 </resources>

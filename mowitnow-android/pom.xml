@@ -30,16 +30,28 @@
 			<scope>provided</scope>
 		</dependency>
 
-		<!-- Commons-io: Utility classes for file manipulations -->
+		<!-- Testing -->
 		<dependency>
-			<groupId>commons-io</groupId>
-			<artifactId>commons-io</artifactId>
-			<version>2.4</version>
+			<groupId>com.pivotallabs</groupId>
+			<artifactId>robolectric</artifactId>
+			<version>1.2</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-core</artifactId>
+			<version>1.9.5</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.squareup</groupId>
+			<artifactId>fest-android</artifactId>
+			<version>1.0.4</version>
+			<scope>test</scope>
 		</dependency>
 	</dependencies>
 
 	<build>
-		<finalName>${project.artifactId}</finalName>
 		<plugins>
 			<!-- Android Maven Plugin -->
 			<plugin>
@@ -49,7 +61,7 @@
 				<configuration>
 					<sdk>
 						<path>${env.ANDROID_SDK}</path>
-						<platform>17</platform>
+						<platform>16</platform>
 					</sdk>
 				</configuration>
 				<extensions>true</extensions>

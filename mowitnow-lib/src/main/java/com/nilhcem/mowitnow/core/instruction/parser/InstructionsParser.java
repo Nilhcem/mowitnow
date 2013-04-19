@@ -16,7 +16,7 @@ import com.nilhcem.mowitnow.core.instruction.MowerOrientation;
 /**
  * Provides useful methods to parse lawn-mower instruction files.
  */
-public final class InstructionsParser {
+public class InstructionsParser {
 	private static final String REGEX_SURFACE = "^\\s*(\\d+)\\s+(\\d+)\\s*$";
 	private static final String REGEX_MOWER_LOCATION = "^\\s*(\\d+)\\s+(\\d+)\\s+([NEWS])\\s*$";
 
