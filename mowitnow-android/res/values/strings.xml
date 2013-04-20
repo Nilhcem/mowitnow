@@ -10,5 +10,4 @@
     <string name="instr_error_title">Invalid data</string>
     <string name="instr_error_msg">Please enter valid instructions.</string>
 
-	<!-- Result -->
 </resources>
