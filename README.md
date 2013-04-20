@@ -61,7 +61,7 @@ NB : Les données en entrée peuvent être injectée sous une autre forme qu'u
 The project is divided into 3 submodules:
 
 * __mowitnow-lib__: Library project containing the core logic implementing the above specifications.
-* __mowitnow-cli__: Java command line project using the `mowitnow-lib` dependency. This waits for an input file and runs many calls to the core library to display the expected result
+* __mowitnow-cli__: Java command line project using the `mowitnow-lib` dependency. This waits for an input file and runs many calls to the core library to display the expected result.
 * __mowitnow-android__: Android project using the `mowitnow-lib` dependency. This is an Android graphic layer to the `mowitnow-lib` library.
 
 
