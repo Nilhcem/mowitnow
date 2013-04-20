@@ -54,6 +54,7 @@ NB : Les données en entrée peuvent être injectée sous une autre forme qu'u
 
 * JDK6 or higher
 * Maven
+* Android SDK
 
 
 ## Directories
