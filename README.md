@@ -2,8 +2,6 @@
 
 _Technical Job Interview Project from Xebia_
 
-<br />
-
 
 ## Specifications (french)
 
@@ -69,7 +67,7 @@ The project is divided into 3 submodules:
 
 ## Compile
 
-    $ mvn clean package install
+    $ mvn clean install
 
 ## Run the Java CLI
 
