@@ -79,3 +79,8 @@ The project is divided into 3 submodules:
 
     $ cd mowitnow-android
     $ mvn android:deploy
+
+## Create android project.properties
+
+    $ cd mowitnow-android
+    $ android update project --path . --target android-16
